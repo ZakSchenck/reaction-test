@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="css/styles.css" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Reaction Game</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Zak's Reaction Test</h1>
-    <div class="canvas">
-        <p id="game-state">Press start game and click when this turns green</p>
+    <div class="input-container">
+      <input id="name-input" type="text" placeholder="Enter your name" />
+      <p id="restrict-text">Please enter a name to continue</p>
     </div>
-    <button id="start-btn">Start Game</button>
+    <div class="canvas">
+      <p id="game-state">Press start game and click when this turns green</p>
+    </div>
+    <form>
+      <button id="start-btn" type="submit">Start Game</button>
+    </form>
     <h4 id="result"></h4>
-<script src="app.js" type="module"></script>
-</body>
+    <button id="leaderboard-btn">Add Score to Database</button>
+    <section class="leaderboard-container">
+        <div class="title">
+            <h2>Most Recent Times</h2>
+        </div>
+    </section>
+    <script src="app.js" type="module"></script>
+  </body>
 </html>

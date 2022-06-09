@@ -5,20 +5,48 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 100vh;
   background-image: linear-gradient(45deg, black, #313131, #464646, black);
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  overflow: hidden;
   gap: 30px;
+}
+
+.input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+}
+
+.input-container input {
+  height: 35px;
+  outline: none;
+  border: none;
+  border-radius: 50px;
+  width: 250px;
+  padding: 10px;
+}
+
+.input-container #restrict-text {
+  color: #ff8c8c;
+  display: none;
+  margin: 0 auto;
+}
+
+.input-container #restrict-text.show {
+  display: block;
 }
 
 * {
@@ -71,6 +99,51 @@ button:hover {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
+}
+
+#leaderboard-btn {
+  display: none;
+}
+
+#leaderboard-btn.show {
+  display: block;
+}
+
+.leaderboard-container {
+  width: 300px;
+  background-color: #3f3f3f;
+  height: 370px;
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, 0.3);
+  overflow: scroll;
+}
+
+.leaderboard-container .title {
+  background-color: #2e2e2e;
+  padding: 10px;
+  border: none;
+  display: block;
+}
+
+.leaderboard-container div {
+  border-bottom: 1px solid #b8b8b8;
+  height: 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 10px;
+}
+
+.leaderboard-container h4 {
+  color: red;
 }
 
 @media all and (max-width: 630px) {

@@ -1,9 +1,7 @@
 body {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  height: 100vh;
   background-image: linear-gradient(
     45deg,
     black,
@@ -14,9 +12,33 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
-  overflow: hidden;
   gap: 30px;
 }
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  input {
+    height: 35px;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    width: 250px;
+    padding: 10px;
+  }
+  
+  #restrict-text {
+    color: rgb(255, 140, 140);
+    display: none;
+    margin: 0 auto;
+  }
+  #restrict-text.show {
+    display: block;
+  }
+}
+
 
 * {
   font-family: "Courier New", Courier, monospace;
@@ -61,6 +83,40 @@ button {
     color: black;
     transition: 0.4s;
     cursor: pointer;
+  }
+}
+
+#leaderboard-btn {
+  display: none;
+}
+
+#leaderboard-btn.show {
+  display: block;
+}
+
+.leaderboard-container {
+  width: 300px;
+  background-color: rgb(63, 63, 63);
+  height: 370px;
+  margin-bottom: 20px;
+  box-shadow: 0px 4px 4px 4px rgba(0, 0, 0, .3);
+  overflow: scroll;
+  .title {
+    background-color: rgb(46, 46, 46);
+    padding: 10px;
+    border: none;
+    display: block;
+  }
+  div {
+    border-bottom: 1px solid rgb(184, 184, 184);
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  h4 {
+    color: red;
   }
 }
 
