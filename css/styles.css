@@ -29,10 +29,6 @@ body {
           box-sizing: border-box;
 }
 
-h1 {
-  margin-top: 5%;
-}
-
 .canvas {
   background-color: #e23c3c;
   width: 600px;
@@ -75,5 +71,20 @@ button:hover {
   -webkit-transition: 0.4s;
   transition: 0.4s;
   cursor: pointer;
+}
+
+@media all and (max-width: 630px) {
+  .canvas {
+    width: 95%;
+  }
+  .canvas p {
+    width: 90%;
+  }
+}
+
+@media all and (max-width: 400px) {
+  h1 {
+    font-size: 8vw;
+  }
 }
 /*# sourceMappingURL=styles.css.map */
