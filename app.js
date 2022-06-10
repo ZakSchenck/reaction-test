@@ -6,15 +6,30 @@ const leaderboardContainer = document.querySelector(".leaderboard-container");
 const nameInput = document.getElementById("name-input");
 const leaderboardBtn = document.getElementById("leaderboard-btn");
 const restrictText = document.getElementById("restrict-text");
+const apiUrl = "http://localhost:4001/api/v1/all";
 // Speed and Delay variables
 let delay;
 let speed = 0;
 let speedInterval;
 
+// POST Request - Adds new score to leaderboard
+const addNewScore = () => {
+  fetch(apiUrl, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: nameInput.value,
+      score: speed,
+    }),
+  }).then((res) => {
+    console.log("Request complete! response:", res);
+  });
+};
+
 // Start game button handler
 startButton.addEventListener("click", (e) => {
   e.preventDefault();
-  // Checks if input is empty
+  // Checks if input is empty and adds the input validator
   if (nameInput.value === "") {
     restrictText.classList.add("show");
   } else {
@@ -23,22 +38,27 @@ startButton.addEventListener("click", (e) => {
   }
 });
 
-// Handles adding new leaderboard item
-const renderLeaderboard = () => {
-  const container = document.createElement("div");
-  const scoreElement = document.createElement("p");
-  const nameElement = document.createElement("h4");
-  scoreElement.innerText = `Speed: ${speed}ms`;
-  nameElement.innerText = `${nameInput.value}`;
-  leaderboardContainer.appendChild(container);
-  container.appendChild(nameElement);
-  container.appendChild(scoreElement);
-  container.appendChild(leaderboardNumber);
-};
+// Handles adding new leaderboard items and renders leaderboard on load
+(function () {
+  fetch(apiUrl)
+    .then((response) => response.json())
+    .then((data) => {
+      for (let i = 0; i < data.length; i++) {
+        const container = document.createElement("div");
+        const scoreElement = document.createElement("p");
+        const nameElement = document.createElement("h4");
+        scoreElement.innerText = `Speed: ${data[i].score}ms`;
+        nameElement.innerText = `${data[i].name}`;
+        leaderboardContainer.appendChild(container);
+        container.appendChild(nameElement);
+        container.appendChild(scoreElement);
+      }
+    });
+})();
 
 leaderboardBtn.addEventListener("click", () => {
   leaderboardBtn.classList.remove("show");
-  renderLeaderboard();
+  addNewScore();
 });
 
 // Sets all elements to start game construct

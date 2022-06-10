@@ -119,6 +119,10 @@ button:hover {
   overflow: scroll;
 }
 
+.leaderboard-container h2 {
+  font-size: 22px;
+}
+
 .leaderboard-container .title {
   background-color: #2e2e2e;
   padding: 10px;
