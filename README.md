@@ -37,7 +37,7 @@ GET request / Rendering leaderboard with an IIFE <br>
 })();
 ```
 POST request
-```
+```js
 const addNewScore = () => {
   fetch(apiUrl, {
     method: "POST",
