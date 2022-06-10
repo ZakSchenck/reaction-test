@@ -18,7 +18,7 @@ The best way I found to approach this with logic is with ``setInterval`` and ``s
 
 ## Frontend Requests
 GET request / Rendering leaderboard with an IIFE <br>
-```
+```js
 (function () {
   fetch(apiUrl)
     .then((response) => response.json())
@@ -53,7 +53,7 @@ const addNewScore = () => {
 ```
 ## Backend Requests
 GET request
-```
+```js
 app.get("/api/v1/all", (req, res) => {
   db.query(
     // Limit of 10 leaderboard scores in ASCENDING order
@@ -69,7 +69,7 @@ app.get("/api/v1/all", (req, res) => {
 });
 ```
 DELETE Request
-```
+```js
 app.delete("/api/v1/all/:id", (req, res) => {
   db.query(
     "DELETE FROM public.leaderboard WHERE public.leaderboard.id = $1",
@@ -85,7 +85,7 @@ app.delete("/api/v1/all/:id", (req, res) => {
 });
 ```
 POST Request 
-```
+```js
 app.post("/api/v1/all", (req, res) => {
   db.query(
     "INSERT INTO public.leaderboard (name, score) VALUES ($1, $2) RETURNING *",
