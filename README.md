@@ -1,6 +1,7 @@
 # Reaction Test Game
 Live website: https://zakschenck.github.io/reaction-test
-<img width="1440" alt="website image" src="https://user-images.githubusercontent.com/91504668/172999434-cd1ab96c-600f-4ec1-9a61-6361e4929334.png">
+<img width="1440" alt="Screen Shot 2022-06-10 at 8 22 19 PM" src="https://user-images.githubusercontent.com/91504668/173165048-5e757546-6044-4c74-9cec-ed2816613a04.png">
+
 
 ## App Description
 This is a fullstack reaction test video game. Time is measured in milliseconds. I implemented a top ten high scores leaderboard of the ten most recent submissions on the backend.
