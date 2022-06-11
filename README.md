@@ -1,6 +1,8 @@
 # Reaction Test Game
-Live website: https://zakschenck.github.io/reaction-test
-<img width="1440" alt="website image" src="https://user-images.githubusercontent.com/91504668/172999434-cd1ab96c-600f-4ec1-9a61-6361e4929334.png">
+Live website: https://zakschenck.github.io/reaction-test <br>
+Backend code: https://github.com/ZakSchenck/reaction-test-backend
+<img width="1440" alt="Screen Shot 2022-06-10 at 8 22 19 PM" src="https://user-images.githubusercontent.com/91504668/173165048-5e757546-6044-4c74-9cec-ed2816613a04.png">
+
 
 ## App Description
 This is a fullstack reaction test video game. Time is measured in milliseconds. I implemented a top ten high scores leaderboard of the ten most recent submissions on the backend.
@@ -17,24 +19,25 @@ The best way I found to approach this with logic is with ``setInterval`` and ``s
 • PostgreSQL
 
 ## Frontend Requests
-GET request / Rendering leaderboard with an IIFE <br>
+GET request / Rendering leaderboard <br>
 ```js
-(function () {
+const renderLeaderboard = () => {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
+      scoresContainer.innerHTML = "";
       for (let i = 0; i < data.length; i++) {
         const container = document.createElement("div");
         const scoreElement = document.createElement("p");
         const nameElement = document.createElement("h4");
-        scoreElement.innerText = `Speed: ${data[i].score}ms`;
+        scoreElement.innerText = `Speed: ${data[i].speed}ms`;
         nameElement.innerText = `${data[i].name}`;
-        leaderboardContainer.appendChild(container);
+        scoresContainer.appendChild(container);
         container.appendChild(nameElement);
         container.appendChild(scoreElement);
       }
     });
-})();
+};
 ```
 POST request
 ```js
