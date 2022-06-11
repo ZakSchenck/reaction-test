@@ -2,11 +2,11 @@ const gameCanvas = document.querySelector(".canvas");
 const startButton = document.getElementById("start-btn");
 const result = document.getElementById("result");
 const gameState = document.getElementById("game-state");
-const leaderboardContainer = document.querySelector(".leaderboard-container");
+const scoresContainer = document.querySelector("#scores");
 const nameInput = document.getElementById("name-input");
 const leaderboardBtn = document.getElementById("leaderboard-btn");
 const restrictText = document.getElementById("restrict-text");
-const apiUrl = "http://localhost:4001/api/v1/all";
+const apiUrl = "https://reaction-app-server.herokuapp.com/api/v1/all";
 // Speed and Delay variables
 let delay;
 let speed = 0;
@@ -19,7 +19,7 @@ const addNewScore = () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       name: nameInput.value,
-      score: speed,
+      speed: Number(speed),
     }),
   }).then((res) => {
     console.log("Request complete! response:", res);
@@ -39,26 +39,28 @@ startButton.addEventListener("click", (e) => {
 });
 
 // Handles adding new leaderboard items and renders leaderboard on load
-(function () {
+const renderLeaderboard = () => {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
+      scoresContainer.innerHTML = "";
       for (let i = 0; i < data.length; i++) {
         const container = document.createElement("div");
         const scoreElement = document.createElement("p");
         const nameElement = document.createElement("h4");
-        scoreElement.innerText = `Speed: ${data[i].score}ms`;
+        scoreElement.innerText = `Speed: ${data[i].speed}ms`;
         nameElement.innerText = `${data[i].name}`;
-        leaderboardContainer.appendChild(container);
+        scoresContainer.appendChild(container);
         container.appendChild(nameElement);
         container.appendChild(scoreElement);
       }
     });
-})();
+};
 
 leaderboardBtn.addEventListener("click", () => {
   leaderboardBtn.classList.remove("show");
   addNewScore();
+  renderLeaderboard();
 });
 
 // Sets all elements to start game construct
@@ -101,3 +103,5 @@ const speedHandler = () => {
     leaderboardBtn.classList.add("show");
   });
 };
+
+renderLeaderboard()();

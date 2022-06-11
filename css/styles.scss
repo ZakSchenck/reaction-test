@@ -110,16 +110,18 @@ button {
     border: none;
     display: block;
   }
-  div {
-    border-bottom: 1px solid rgb(184, 184, 184);
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 10px;
-  }
   h4 {
     color: red;
+  }
+  #scores {
+    div {
+      height: 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 10px;
+      border-bottom: 1px solid lightgray;
+    }
   }
 }
 

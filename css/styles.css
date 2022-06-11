@@ -130,8 +130,11 @@ button:hover {
   display: block;
 }
 
-.leaderboard-container div {
-  border-bottom: 1px solid #b8b8b8;
+.leaderboard-container h4 {
+  color: red;
+}
+
+.leaderboard-container #scores div {
   height: 60px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -144,10 +147,7 @@ button:hover {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 10px;
-}
-
-.leaderboard-container h4 {
-  color: red;
+  border-bottom: 1px solid lightgray;
 }
 
 @media all and (max-width: 630px) {
