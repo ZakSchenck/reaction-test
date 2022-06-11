@@ -18,24 +18,25 @@ The best way I found to approach this with logic is with ``setInterval`` and ``s
 • PostgreSQL
 
 ## Frontend Requests
-GET request / Rendering leaderboard with an IIFE <br>
+GET request / Rendering leaderboard <br>
 ```js
-(function () {
+const renderLeaderboard = () => {
   fetch(apiUrl)
     .then((response) => response.json())
     .then((data) => {
+      scoresContainer.innerHTML = "";
       for (let i = 0; i < data.length; i++) {
         const container = document.createElement("div");
         const scoreElement = document.createElement("p");
         const nameElement = document.createElement("h4");
-        scoreElement.innerText = `Speed: ${data[i].score}ms`;
+        scoreElement.innerText = `Speed: ${data[i].speed}ms`;
         nameElement.innerText = `${data[i].name}`;
-        leaderboardContainer.appendChild(container);
+        scoresContainer.appendChild(container);
         container.appendChild(nameElement);
         container.appendChild(scoreElement);
       }
     });
-})();
+};
 ```
 POST request
 ```js
